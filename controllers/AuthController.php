@@ -14,7 +14,7 @@ use yii\web\Controller;
 use Yii;
 use yii\web\Response;
 
-class AuthController extends Controller{
+class AuthController extends Controller {
 
     public function beforeAction($action)
     {
@@ -56,11 +56,8 @@ class AuthController extends Controller{
         return $this->goHome();
     }
 
-    /**
-     * @param null $id
-     * @return Test|array|\yii\db\ActiveRecord[]|null
-     */
-    private function actionTest($id = null)
+
+    public function actionTest($id = null)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         if (Yii::$app->request->isGet) {
