@@ -16,6 +16,23 @@ class Test extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+//    public function behaviors()
+//    {
+//        return [
+//            'test' => [
+//                'class' => \yii\filters\VerbFilter::className(),
+//                'actions' => [
+//                    'id'  => ['GET'],
+//                    'name'   => ['GET', 'PUT', 'POST','DELETE'],
+//                    'body'   => ['GET', 'PUT', 'POST','DELETE'],
+//                    'int'   => ['GET', 'PUT', 'POST','DELETE'],
+//                    'bool'   => ['GET', 'PUT', 'POST','DELETE'],
+//                    'double'   => ['GET', 'PUT', 'POST','DELETE'],
+//                ],
+//            ],
+//        ];
+//    }
+
     public static function tableName()
     {
         return 'test';
@@ -30,6 +47,9 @@ class Test extends \yii\db\ActiveRecord
             [['body', 'name'], 'required'],
             [['body'], 'string'],
             [['name'], 'string', 'max' => 255],
+            [['int'],'integer'],
+            [['bool'],'boolean'],
+            [['double'],'number'],
         ];
     }
 
@@ -42,6 +62,9 @@ class Test extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'body' => 'Body',
+            'int' => 'Int',
+            'bool' => 'Bool',
+            'double' => 'Double',
         ];
     }
 }

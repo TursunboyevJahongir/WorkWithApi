@@ -79,16 +79,22 @@ class AuthController extends Controller {
         }
         if (Yii::$app->request->isPut) {
             if (!is_numeric($id)) {
-                throw new InvalidArgumentException();
+                throw new InvalidArgumentException('faqat raqam yuboring');
 //                throw new MethodNotAllowedHttpException('Please use int id');
             }
+            $have= Test::findOne(['id'=>$id]);
+            if($have===null)
+            {
+                throw new InvalidArgumentException("bunaqa id yo'q");
+            }
             $model = Test::findone(['id' => $id]);
+//            var_dump($model);
             if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->validate()) {
                 $model->save();
                 return ['status' => 'ok'];
             }
             else
-                return['status' => "error"];
+                return['status' => "error", 'message' => $model->getErrors()];
 
         }
         if(Yii::$app->request->isDelete){
